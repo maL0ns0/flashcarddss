@@ -4,6 +4,7 @@ import Topics from './features/topics/Topics'
 import Topic from './features/topics/Topic'
 import NewTopicForm from './features/topics/NewTopicForm'
 import Quizzes from './features/quizzes/Quizzes';
+import Quiz from './features/quizzes/Quiz';
 import NewQuizForm from './features/quizzes/NewQuizForm';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
         <Route path="quizzes">
           <Route index element={<Quizzes />} />
+          <Route path=":quizId" element={<Quiz/>} />
         </Route>
 
         <Route path="new_quiz">

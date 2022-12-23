@@ -1,16 +1,22 @@
 import React, { useState } from "react";
-//import { useHistory } from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from "react-router-dom";
+import { selectAllTopics } from '../topics/TopicsSlice.js';
+import { useSelector, useDispatch } from "react-redux";
+import { createquiz } from './QuizzesSlice.js';
+
 
 export default function NewQuizForm() {
   const [name, setName] = useState("");
   const [cards, setCards] = useState([]);
   const [topicId, setTopicId] = useState("");
-  //const history = useHistory();
-  const topics = {};
+  const navigate = useNavigate();
+  const topics = useSelector(selectAllTopics);
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    //{ name: 'quiz name', topicId: '456', cardIds: ['1', '2', '3', ...]}.
     if (name.length === 0) {
       return;
     }
@@ -19,8 +25,14 @@ export default function NewQuizForm() {
 
     // create the new cards here and add each card's id to cardIds
     // create the new quiz here
-
-    //history.push(ROUTES.quizzesRoute());
+    let qz = {
+      name,
+      topicId,
+      cardIds
+    }
+    
+    dispatch(createquiz(qz))
+    navigate('/quizzes')
   };
 
   const addCardInputs = (e) => {
@@ -51,11 +63,11 @@ export default function NewQuizForm() {
         />
         <select
           id="quiz-topic"
-          onChange={(e) => setTopicId(e.currentTarget.value)}
+          onChange={ (e) => setTopicId(e.currentTarget.value) }
           placeholder="Topic"
         >
           <option value="">Topic</option>
-          {Object.values(topics).map((topic) => (
+          {topics.map((topic) => (
             <option key={topic.id} value={topic.id}>
               {topic.name}
             </option>

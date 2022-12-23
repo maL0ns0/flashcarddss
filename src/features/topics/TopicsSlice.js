@@ -9,6 +9,13 @@ const topicsSlice = createSlice({
     name: 'topics',
     initialState,
     reducers: {
+        addQuizzId: {
+            reducer: (state, action) => {
+                const {quizId, topicId} = action.payload;
+                const theTopic = state.topics.find(t => t.id === topicId)
+                if(theTopic) theTopic.quizIds.push(quizId)
+            }
+        },
         addTopic:{
             reducer: (state, action) => {
                 state.topics.push(action.payload);
@@ -29,5 +36,5 @@ const topicsSlice = createSlice({
 
 export const selectAllTopics = state => state.topics.topics;
 
-export const { addTopic } =  topicsSlice.actions;
+export const { addTopic, addQuizzId } =  topicsSlice.actions;
 export default topicsSlice.reducer;

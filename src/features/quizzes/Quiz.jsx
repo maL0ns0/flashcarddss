@@ -1,21 +1,28 @@
 import { Link, useParams } from "react-router-dom";
-import Card from "../cards/Card";
-import ROUTES from "../../app/routes";
+import { useSelector } from "react-redux";
+import {selectAllQuizzes} from './QuizzesSlice';
 
-export default function Topic() {
-  const quizzes = {}; // replace this with a call to your selector to get all the quizzes in state
+//Ahorita vemos lo de las tarjetas
+//import Card from "../cards/Cars";
+/*
+{quiz.cardIds.map((id) => (
+  <Card key={id} id={id} />
+))}
+*/
+
+
+export default function Quiz() {
+  const quizzes = useSelector( selectAllQuizzes );
   let { quizId } = useParams();
-  const quiz = quizzes[quizId];
+  const quiz = quizzes.find(quiz => quiz.quizId === quizId);
 
   return (
     <section>
       <h1>{quiz.name}</h1>
       <ul className="cards-list">
-        {quiz.cardIds.map((id) => (
-          <Card key={id} id={id} />
-        ))}
+        {quizId}
       </ul>
-      <Link to={ROUTES.newQuizRoute()} className="button center">
+      <Link to="/new_quiz" className="button center">
         Create a New Quiz
       </Link>
     </section>
