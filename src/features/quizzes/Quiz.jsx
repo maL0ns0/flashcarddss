@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {selectAllQuizzes} from './QuizzesSlice';
+import Card from '../cards/Card';
 
 //Ahorita vemos lo de las tarjetas
 //import Card from "../cards/Cars";
@@ -20,7 +21,9 @@ export default function Quiz() {
     <section>
       <h1>{quiz.name}</h1>
       <ul className="cards-list">
-        {quizId}
+        {quiz.cardIds.map((id) => (
+        <Card key={id} id={id} />
+        ))}
       </ul>
       <Link to="/new_quiz" className="button center">
         Create a New Quiz

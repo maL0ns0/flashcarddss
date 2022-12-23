@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { selectAllTopics } from '../topics/TopicsSlice.js';
 import { useSelector, useDispatch } from "react-redux";
 import { createquiz } from './QuizzesSlice.js';
+import { v4 as uuidv4 } from 'uuid';
+import { addCard } from '../cards/CardsSlice';
 
 
 export default function NewQuizForm() {
@@ -13,6 +15,11 @@ export default function NewQuizForm() {
   const topics = useSelector(selectAllTopics);
   const dispatch = useDispatch();
 
+  
+  const cardsWtIds = () => {
+    return cards.map(card => ({...card, id:uuidv4()}))
+  }
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -21,17 +28,21 @@ export default function NewQuizForm() {
       return;
     }
 
-    const cardIds = [];
+    const nwCards = cardsWtIds();
+    const cardIds = nwCards.map(c => c.id);
 
-    // create the new cards here and add each card's id to cardIds
-    // create the new quiz here
     let qz = {
       name,
       topicId,
       cardIds
     }
-    
+
     dispatch(createquiz(qz))
+    
+    //Agregamos las cartas
+    for(let nwCard of nwCards){
+      dispatch( addCard(nwCard) )
+    }
     navigate('/quizzes')
   };
 
