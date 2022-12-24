@@ -1,0 +1,28 @@
+header{
+    & h1{
+        text-align: center;
+        color: var(--header-color);
+    }
+
+    & ul {
+        display: flex;
+        justify-content: space-evenly;
+        list-style: none;
+        flex-wrap: nowrap;
+        
+        & li{
+            font-size: 1.3rem;
+        }
+        
+        & a{
+            text-decoration: none;
+            color: var(--nav-color);
+            transition: color 0.3s ease-in-out;
+
+            &:hover{
+                cursor: pointer;
+                color: var(--nav-hov-color);
+            }
+        }
+    }
+}
