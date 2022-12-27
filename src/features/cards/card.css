@@ -1,0 +1,18 @@
+.card{
+    width: 12.5rem;
+    min-height: 12.5rem;
+    font-size: 1.1rem;
+    border-radius: 0.625rem;
+    overflow: auto;
+    margin-bottom: 0.625rem;
+}
+
+.flipped{
+    background-color: var(--flipped-card-color);
+    color: black;
+}
+
+.no-flipped{
+    background-color: var(--no-flipped-card-color);
+    color: black;
+}

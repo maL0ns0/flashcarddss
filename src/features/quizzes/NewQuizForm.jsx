@@ -1,3 +1,4 @@
+import './newQuizForm.css';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { selectAllTopics } from '../topics/TopicsSlice.js';
@@ -63,7 +64,7 @@ export default function NewQuizForm() {
   };
 
   return (
-    <section className="center">
+    <section className="form-section newQuizFrm">
       <h1>Create a new quiz</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -113,8 +114,8 @@ export default function NewQuizForm() {
           </div>
         ))}
         <div className="actions-container">
-          <button onClick={addCardInputs}>Add a Card</button>
-          <button>Create Quiz</button>
+          <button className='addButton' onClick={addCardInputs}>Add a Card</button>
+          <button className='button'>Create Quiz</button>
         </div>
       </form>
     </section>

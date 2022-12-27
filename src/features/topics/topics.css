@@ -1,0 +1,38 @@
+.topicsSec{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.9375rem;
+}
+
+.topics-list{
+    margin-left: -2.5625rem;
+}
+
+.topic-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.625rem;
+    
+
+    & img{
+        background-color: whitesmoke;
+        border-radius: 0.3125rem;
+        width: 9.0625rem;
+        height: 9.0625rem;
+        padding: 0.1875rem;
+    }
+}
+
+.topic-link{
+    text-decoration: none;
+    text-align: center;
+    color: var(--btn-bg-color);
+
+    &:hover{
+        color: var(--btn-bg-color-hvr);
+        cursor: pointer;
+    }
+}

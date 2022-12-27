@@ -1,3 +1,4 @@
+import './quizzes.css';
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {selectAllQuizzes} from './QuizzesSlice.js';
@@ -6,7 +7,7 @@ import {selectAllQuizzes} from './QuizzesSlice.js';
 const Quizzes = () => {
   const quizzes = useSelector(selectAllQuizzes);
   return (
-    <section className="center">
+    <section className="quizzes-sec">
       <h1>Quizzes</h1>
       <ul className="quizzes-list">
         {quizzes.map( quiz => (

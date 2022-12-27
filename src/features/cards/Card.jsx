@@ -1,3 +1,4 @@
+import './card.css';
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAllCards } from "./CardsSlice.js";
@@ -9,7 +10,7 @@ export default function Card({ id }) {
 
   return (
     <li>
-      <button className="card" onClick={(e) => setFlipped(!flipped)}>
+      <button className={`card ${flipped? 'flipped' : 'no-flipped'}`} onClick={(e) => setFlipped(!flipped)}>
         {flipped ? card.back : card.front}
       </button>
     </li>

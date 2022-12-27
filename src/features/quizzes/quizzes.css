@@ -1,0 +1,24 @@
+.quizzes-sec{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quizzes-list{
+    list-style-type: none;
+    
+    & a{
+        text-align: center;
+        display: block;
+        text-decoration: none;
+        color: var(--qz-bg-color);
+        margin-left: -2.1875rem;
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+
+        & :hover{
+            color: var(--qz-bg-color-hvr);
+            cursor: pointer;
+        }
+    }
+}

@@ -6,6 +6,14 @@
   --header-color: rgb(179, 13, 201);
   --nav-color: rgb(0, 182, 0);
   --nav-hov-color: rgb(0, 122, 0);
+  --btn-bg-color: rgb(179, 13, 201);
+  --btn-bg-color-hvr: rgb(126, 10, 141);
+  --add-bg-color:rgb(0, 194, 0);
+  --add-bg-color-hvr: rgb(0, 148, 0);
+  --qz-bg-color: rgb(231, 231, 0);
+  --qz-bg-color-hvr: rgb(187, 187, 0);
+  --flipped-card-color: rgb(0, 202, 0);
+  --no-flipped-card-color: rgb(231, 231, 0);
 }
 
 html{
@@ -26,6 +34,41 @@ body {
   color: var(--text-color);
 }
 
+.button{
+  border-radius: 0.3125rem;
+  padding: 0.4375rem 0.625rem;
+  text-decoration: none;
+  background-color: var(--btn-bg-color);
+  color: black;
+  border: none;
+
+  &:hover{
+    background-color: var(--btn-bg-color-hvr);
+    cursor: pointer;
+  }
+}
+
+.addButton{
+  border-radius: 0.3125rem;
+  padding: 0.4375rem 0.625rem;
+  border: none;
+  background-color: var(--add-bg-color);
+  color: black;
+  
+  &:hover{
+    background-color: var(--add-bg-color-hvr);
+    cursor: pointer;
+  }
+}
+
+.titleTwo{
+  text-align: center;
+}
+
+.form-section{
+  display: flex;
+  gap: 0.1875rem;
+}
 
 
 

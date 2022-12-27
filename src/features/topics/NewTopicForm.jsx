@@ -1,3 +1,4 @@
+import './newTopicForm.css'
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -26,7 +27,7 @@ export default function NewTopicForm() {
   return (
     <section>
       <form onSubmit={handleSubmit}>
-        <h1 className="center">Create a new topic</h1>
+        <h1 className="titleTwo">Create a new topic</h1>
         <div className="form-section">
           <input
             id="topic-name"
@@ -50,7 +51,7 @@ export default function NewTopicForm() {
             ))}
           </select>
         </div>
-        <button className="center">Add Topic</button>
+        <button className="addTopicBtn">Add Topic</button>
       </form>
     </section>
   );

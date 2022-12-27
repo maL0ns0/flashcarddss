@@ -1,0 +1,17 @@
+
+
+.addTopicBtn{
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0.3125rem;
+    margin-top: 0.3125rem;
+    padding: 0.3125rem 0;
+    background-color: var(--add-bg-color);
+    color: black;
+
+    &:hover{
+        background-color: var(--add-bg-color-hvr);
+        cursor: pointer;
+    }
+}
