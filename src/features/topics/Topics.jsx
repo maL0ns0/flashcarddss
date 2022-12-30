@@ -6,8 +6,7 @@ import { useSelector } from "react-redux";
 
 
 export default function Topics() {
-  const topics = useSelector(selectAllTopics); // replace this with a call to your selector to select all the topics in state
-  console.log(topics);
+  const topics = useSelector(selectAllTopics);
 
   return (
     <section className="topicsSec">

@@ -1,27 +1,38 @@
 import './newTopicForm.css'
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addTopic } from './TopicsSlice'
 import { ALL_ICONS } from "../../data/icons";
 
+const rd_reducer = (rd_state, rd_action) => {
+  switch(rd_action.type){
+    case 'setName':
+      return {...rd_state, name: rd_action.payload}
+    case 'setIcon':
+      return {...rd_state, icon: rd_action.payload}
+    default:
+      throw new Error();
+  }
+}
+
 export default function NewTopicForm() {
-  const [name, setName] = useState("");
-  const [icon, setIcon] = useState("");
+  
+  //El segundo argumento es el estado inicial, como no usaremos
+  //useState todo lo pondremos en un objeto
+  const [rd_state, rd_dispatch] = useReducer(rd_reducer, {name:'', icon:''});
   
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name.length === 0) {
+    if (rd_state.name.length === 0) {
       return;
     }
     
-    dispatch(addTopic(name, icon));
+    dispatch(addTopic(rd_state.name, rd_state.icon));
     navigate('/topics')
-    
-    //history.push(ROUTES.topicsRoute());
   };
 
   return (
@@ -32,12 +43,12 @@ export default function NewTopicForm() {
           <input
             id="topic-name"
             type="text"
-            value={name}
-            onChange={(e) => setName(e.currentTarget.value)}
+            value={rd_state.name}
+            onChange={(e) => rd_dispatch({type:'setName', payload: e.currentTarget.value})}
             placeholder="Topic Name"
           />
           <select
-            onChange={(e) => setIcon(e.currentTarget.value)}
+            onChange={(e) => rd_dispatch({type:'setIcon', payload: e.currentTarget.value})}
             required
             defaultValue="default"
           >
